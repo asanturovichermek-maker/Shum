@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHUM COLLECT</title>
+  <link rel="stylesheet" href="шум.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="logo">// COLLECT_PROTOCOL</div>
+    <div class="status">
+      <span class="dot"></span>
+      NOISE ACTIVE
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="panel">
+      <h2>/// NUMERICAL GRID</h2>
+      <p class="instruction">
+        НАЖИМАЙ НА КЛЕТКИ И ИЩИ СЕКРЕТНЫЙ ПАРОЛЬ
+      </p>
+      <div id="grid" class="grid"></div>
+    </section>
+
+    <section class="panel">
+      <h2>/// SIGNAL / NOISE</h2>
+      <div id="signal" class="signal">
+        SIGNAL WAITING...
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>/// COLLECTED DATA</h2>
+      <div id="collected" class="collected">_ _ _ _ _ _</div>
+
+      <p id="message" class="message">
+        NOISE ACTIVE // SIGNAL NOT FOUND
+      </p>
+
+      <div class="riddle">
+        <h3>/// DIGITAL RIDDLE</h3>
+
+        <p>
+          Я невидим, но передаю сообщения.
+          Меня ловят устройства, чтобы услышать голос
+          или получить данные. Кто я?
+        </p>
+
+        <p class="hint">
+          ПОДСКАЗКА: 6 БУКВ. НАЧИНАЕТСЯ НА S,
+          ЗАКАНЧИВАЕТСЯ НА L.
+        </p>
+
+        <div class="password">S _ _ _ _ L</div>
+
+        <p class="small">
+          НАЙДИ 6 БУКВ В СЕТКЕ И СОБЕРИ ПАРОЛЬ.
+        </p>
+      </div>
+
+      <button id="resetButton" class="reset">
+        RESTART PROTOCOL
+      </button>
+    </section>
+
+  </main>
+
+  <footer>
+    SHUM COLLECT // SYSTEM ONLINE
+  </footer>
+
+  <script src="шум.js"></script>
+</body>
+</html>
