@@ -1,0 +1,276 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #03090d;
+  color: #48dce0;
+  font-family: monospace;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 3px,
+    rgba(70, 210, 220, 0.035) 4px
+  );
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 22px 18px;
+  border-bottom: 1px solid #17373e;
+  background: #050d12;
+}
+
+.logo {
+  font-size: 17px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+.status {
+  color: #b34a65;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 7px;
+  background: #ed4167;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ed4167;
+}
+
+.container {
+  width: min(850px, 100%);
+  margin: auto;
+  padding: 18px;
+}
+
+.panel {
+  margin: 18px 0 28px;
+  padding: 22px;
+  border: 1px solid #1a3840;
+  border-radius: 16px;
+  background: rgba(5, 15, 21, 0.92);
+  box-shadow: 0 0 18px rgba(35, 190, 200, 0.04);
+}
+
+h2 {
+  margin: 0 0 18px;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: 4px;
+  color: #57cbd0;
+}
+
+.instruction {
+  color: #64838a;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  border-top: 1px solid #23424b;
+  border-left: 1px solid #23424b;
+}
+
+.cell {
+  min-width: 0;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  border: 0;
+  border-right: 1px solid #23424b;
+  border-bottom: 1px solid #23424b;
+  background: rgba(8, 24, 31, 0.8);
+  color: #627982;
+  font-family: monospace;
+  font-size: clamp(10px, 3.5vw, 16px);
+  cursor: pointer;
+  transition: 0.15s;
+  touch-action: manipulation;
+}
+
+.cell:hover {
+  background: #12353b;
+  color: #a5ffff;
+}
+
+.cell.revealed {
+  color: #62e5a1;
+  background: #102c27;
+}
+
+.cell.correct {
+  color: #75ffff;
+  background: #12464b;
+  box-shadow: inset 0 0 12px #1c9da5;
+}
+
+.cell.wrong {
+  color: #ff6981;
+  background: #35141e;
+}
+
+.cell:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.signal {
+  min-height: 110px;
+  padding: 18px;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  line-height: 2;
+  letter-spacing: 3px;
+  color: #42646d;
+  background: #020608;
+  border: 1px solid #19323a;
+  font-size: 13px;
+}
+
+.collected {
+  min-height: 45px;
+  padding: 10px 0;
+  font-size: clamp(20px, 6vw, 30px);
+  letter-spacing: 8px;
+  color: #72f4bb;
+  overflow-wrap: anywhere;
+}
+
+.message {
+  min-height: 40px;
+  color: #8da9ae;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.riddle {
+  margin-top: 20px;
+  padding: 18px;
+  border: 1px solid #24505a;
+  background: rgba(9, 30, 37, 0.8);
+  box-shadow: inset 0 0 15px rgba(50, 200, 210, 0.04);
+}
+
+.riddle h3 {
+  color: #54e1e4;
+  font-size: 13px;
+  letter-spacing: 3px;
+}
+
+.riddle p {
+  color: #91aeb5;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.riddle .hint {
+  color: #d4b96d;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.password {
+  padding: 14px 0;
+  text-align: center;
+  font-size: 25px;
+  letter-spacing: 8px;
+  color: #62f3bc;
+  text-shadow: 0 0 12px #168e83;
+}
+
+.riddle .small {
+  color: #53767e;
+  font-size: 10px;
+}
+
+.reset {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #39cbd0;
+  border-radius: 5px;
+  background: transparent;
+  color: #60e5e8;
+  font-family: monospace;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.reset:hover {
+  color: #031013;
+  background: #52dce0;
+}
+
+body.signal-found .status {
+  color: #65f4a8;
+}
+
+body.signal-found .dot {
+  background: #65f4a8;
+  box-shadow: 0 0 12px #65f4a8;
+  animation: none;
+}
+
+body.signal-found .signal {
+  color: #75f5b5;
+  border-color: #277c60;
+}
+
+@keyframes noisePulse {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.45;
+  }
+}
+
+body:not(.signal-found) .dot {
+  animation: noisePulse 0.7s infinite;
+}
+
+footer {
+  padding: 22px 10px;
+  border-top: 1px solid #17373e;
+  color: #45646b;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 400px) {
+  .container {
+    padding: 8px;
+  }
+
+  .panel {
+    padding: 12px;
+  }
+
+  .logo {
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  .cell {
+    font-size: 12px;
+  }
+
+  .password {
+    letter-spacing: 5px;
+  }
+}
